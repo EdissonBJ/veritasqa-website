@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VeritasQA — Automatización empresarial con IA</title>
+<meta name="description" content="VeritasQA: automatizamos los procesos repetitivos de tu empresa con IA y criterio de QA profesional. Sistemas que trabajan solos y no se caen en producción." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="VeritasQA — Automatización empresarial con IA" />
+<meta property="og:description" content="Convertimos operaciones manuales en sistemas que trabajan solos. Automatización con criterio de QA profesional." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://veritasqa.co" />
+<!-- og:image: agrega aquí una imagen 1200x630 cuando la tengas -->
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/favicon10.png" />
+
+<!-- Google Fonts: Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'brand-blue':  '#1E63F2',
+          'brand-navy':  '#0D47A1',
+          'brand-dark':  '#111827',
+          'brand-gray':  '#6B7280',
+          'brand-bg':    '#F5F7FA',
+          'brand-cyan':  '#00D4FF',
+        },
+        fontFamily: {
+          sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  body { background-color: #F5F7FA; }
+  ::selection { background: #1E63F2; color: #fff; }
+
+  /* Reveal on scroll */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; }
+  .reveal.in { animation: fadeUp .75s cubic-bezier(.2,.7,.2,1) forwards; }
+
+  /* Subtle grid texture */
+  .grid-texture {
+    background-image:
+      linear-gradient(rgba(30,99,242,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,99,242,0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Status pulse */
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(61,220,151,0.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(61,220,151,0); }
+    100% { box-shadow: 0 0 0 0 rgba(61,220,151,0); }
+  }
+  .pulse { animation: pulse 2.4s infinite; }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #1E63F2, #00D4FF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+</head>
+
+<body class="font-sans text-brand-dark antialiased">
+
+<!-- ===================== NAVBAR ===================== -->
+<header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo (texto estilizado — reemplazar por asset final cuando lo tengas) -->
+      <a href="#" class="flex items-center">
+        <img src="assets/logo.png" alt="VeritasQA" class="h-28 w-auto" />
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-9">
+        <a href="#servicios" class="text-sm font-medium text-brand-gray hover:text-brand-dark transition">Servicios</a>
+        <a href="#casos" class="text-sm font-medium text-brand-gray hover:text-brand-dark transition">Casos</a>
+        <a href="#agendar" class="text-sm font-medium text-brand-gray hover:text-brand-dark transition">Agendar</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#agendar" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-brand-blue text-white text-sm font-semibold hover:bg-brand-navy transition-colors duration-200 shadow-sm">
+          Contáctanos
+        </a>
+        <button id="menuBtn" class="md:hidden p-2" aria-label="Menú">
+          <svg class="w-6 h-6 text-brand-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-5 space-y-4">
+    <a href="#servicios" class="block text-sm font-medium text-brand-gray">Servicios</a>
+    <a href="#casos" class="block text-sm font-medium text-brand-gray">Casos</a>
+    <a href="#agendar" class="block text-sm font-medium text-brand-gray">Agendar</a>
+    <a href="#agendar" class="block text-center px-5 py-2.5 rounded-lg bg-brand-blue text-white text-sm font-semibold">Contáctanos</a>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="relative pt-36 pb-24 lg:pt-44 lg:pb-28 overflow-hidden">
+  <!-- background flourishes -->
+  <div class="absolute inset-0 grid-texture [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000,transparent)]"></div>
+  <div class="absolute top-[-10%] right-[-5%] w-[480px] h-[480px] rounded-full bg-brand-blue/10 blur-3xl"></div>
+  <div class="absolute bottom-[-20%] left-[-10%] w-[420px] h-[420px] rounded-full bg-brand-cyan/10 blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    <span class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 text-xs font-medium text-brand-gray mb-8 shadow-sm">
+      <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+      Automatización empresarial con IA · Bogotá · LATAM
+    </span>
+
+    <h1 class="reveal text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] max-w-4xl mx-auto">
+      Operaciones manuales,<br />
+      <span class="gradient-text">CONVERTIDAS EN SISTEMAS.</span>
+    </h1>
+
+    <p class="reveal mt-7 text-base sm:text-lg text-brand-gray max-w-2xl mx-auto leading-relaxed">
+      Automatizamos los procesos repetitivos de tu empresa con IA y sistemas conectados para que tu equipo deje de hacer trabajo repetitivo y se enfoque en crecer.
+    </p>
+
+    <div class="reveal mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+      <a href="#servicios" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-blue text-white font-semibold hover:bg-brand-navy transition-colors duration-200 shadow-lg shadow-brand-blue/20">
+        Ver servicios
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#agendar" class="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-transparent border border-brand-gray/40 text-brand-dark font-semibold hover:border-brand-blue hover:text-brand-blue transition-colors duration-200">
+        Agendar demo
+      </a>
+    </div>
+
+    <!-- Hero dashboard mockup -->
+    <div class="reveal mt-16 max-w-4xl mx-auto">
+      <div class="rounded-2xl bg-brand-dark border border-white/10 shadow-2xl shadow-brand-dark/20 overflow-hidden text-left">
+        <!-- window bar -->
+        <div class="flex items-center justify-between px-5 py-3.5 border-b border-white/10">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-white/15"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-white/15"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-white/15"></span>
+            <span class="ml-3 text-xs text-gray-400 font-medium">veritasqa · panel de operaciones</span>
+          </div>
+          <span class="flex items-center gap-2 text-[11px] uppercase tracking-wide text-emerald-400 font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 pulse"></span> Operativo
+          </span>
+        </div>
+        <!-- body -->
+        <div class="grid sm:grid-cols-2 gap-px bg-white/5">
+          <div class="bg-brand-dark p-6 space-y-4">
+            <p class="text-[11px] uppercase tracking-wider text-gray-500 font-medium">Procesos automatizados</p>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-gray-300">Agente de WhatsApp</span>
+                <span class="flex items-center gap-1.5 text-emerald-400 text-xs font-medium">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  activo
+                </span>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-gray-300">Agendamiento + CRM</span>
+                <span class="flex items-center gap-1.5 text-emerald-400 text-xs font-medium">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  activo
+                </span>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-gray-300">Seguimiento comercial</span>
+                <span class="flex items-center gap-1.5 text-emerald-400 text-xs font-medium">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  activo
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-brand-dark p-6 space-y-5">
+            <div>
+              <div class="flex items-center justify-between text-sm mb-2">
+                <span class="text-[11px] uppercase tracking-wider text-gray-500 font-medium">Uptime del proceso</span>
+                <span class="text-white font-semibold">99.8%</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/10 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan" style="width:99.8%"></div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 pt-2">
+              <div>
+                <p class="text-2xl font-bold text-white">1.284</p>
+                <p class="text-xs text-gray-500">Tareas ejecutadas hoy</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold text-white">38<span class="text-sm text-gray-400"> h</span></p>
+                <p class="text-xs text-gray-500">Ahorradas / semana</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PILARES / VALORES ===================== -->
+<section class="py-24 bg-white border-y border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="reveal text-sm font-semibold text-brand-blue uppercase tracking-wide mb-3">Nuestros pilares</p>
+      <h2 class="reveal text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
+        Tres principios que guían cada proyecto.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-14">
+      <!-- Confiabilidad -->
+      <div class="reveal group p-8 rounded-2xl bg-brand-bg border border-gray-200 hover:border-brand-blue/40 hover:shadow-lg hover:shadow-brand-blue/5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-brand-blue" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2.5">Automatizaciones que no se caen</h3>
+        <p class="text-sm text-brand-gray leading-relaxed">
+          Un equipo con <span class="font-medium text-brand-dark">mas de 12 años de experiencia en gestion de software en Telefónica detrás de cada entrega.</span> Cada automatización se
+          prueba, documenta y monitorea, diseñada para aguantar producción real, no
+          solo la demo.
+        </p>
+      </div>
+
+      <!-- Automatización -->
+      <div class="reveal group p-8 rounded-2xl bg-brand-bg border border-gray-200 hover:border-brand-blue/40 hover:shadow-lg hover:shadow-brand-blue/5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-brand-blue" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2.5">IA aplicada al negocio</h3>
+        <p class="text-sm text-brand-gray leading-relaxed">
+          Combinamos <span class="font-medium text-brand-dark">n8n</span>,
+          <span class="font-medium text-brand-dark">WhatsApp Cloud API</span> y modelos
+          de IA para automatizar conversaciones, agendamiento, seguimiento y operaciones
+          internas de tu empresa.
+        </p>
+      </div>
+
+      <!-- Resultados -->
+      <div class="reveal group p-8 rounded-2xl bg-brand-bg border border-gray-200 hover:border-brand-blue/40 hover:shadow-lg hover:shadow-brand-blue/5 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-brand-blue" viewBox="0 0 24 24" fill="none">
+            <path d="M4 19V10M10 19V5M16 19v-6M22 19H2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M16 6l4-3M20 3v3.5M20 3h-3.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2.5">Resultados medibles</h3>
+        <p class="text-sm text-brand-gray leading-relaxed">
+          Entregamos valor medible y crecimiento continuo. Menos defectos,
+          menos horas manuales, más velocidad de entrega — con números que lo demuestran.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICIOS ===================== -->
+<section id="servicios" class="py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="reveal text-sm font-semibold text-brand-blue uppercase tracking-wide mb-3">Servicios</p>
+      <h2 class="reveal text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
+        Tres formas de empezar a trabajar con nosotros.
+      </h2>
+      <p class="reveal mt-4 text-brand-gray">
+        Desde un diagnóstico de bajo riesgo hasta un acompañamiento continuo. Tú eliges la puerta de entrada.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-14">
+      <!-- 01 -->
+      <div class="reveal flex flex-col p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-xl hover:shadow-brand-dark/5 hover:-translate-y-1 transition-all duration-300">
+        <span class="text-sm font-semibold text-brand-blue mb-5">01</span>
+        <h3 class="text-xl font-semibold mb-1">Diagnóstico de Automatización</h3>
+        <p class="text-xs uppercase tracking-wide text-brand-gray mb-4">1 semana · sin compromiso</p>
+        <p class="text-sm text-brand-gray leading-relaxed flex-1">
+          Mapeamos los procesos repetitivos de tu empresa, calculamos el ROI de
+          automatizarlos y te entregamos la recomendación de stack. Tu punto de entrada
+          de bajo riesgo.
+        </p>
+        <a href="#agendar" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:gap-3 transition-all">
+          Empezar aquí
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <!-- 02 -->
+      <div class="reveal flex flex-col p-8 rounded-2xl bg-brand-dark border border-brand-dark text-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+        <span class="text-sm font-semibold text-brand-cyan mb-5">02</span>
+        <h3 class="text-xl font-semibold mb-1">Implementación</h3>
+        <p class="text-xs uppercase tracking-wide text-gray-400 mb-4">4 a 6 semanas · end-to-end</p>
+        <p class="text-sm text-gray-300 leading-relaxed flex-1">
+          Construimos tu proceso automatizado de punta a punta: desarrollo, pruebas,
+          documentación, monitoreo y entrenamiento de tu equipo. Lo entregamos funcionando
+          y listo para producción.
+        </p>
+        <a href="#agendar" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-cyan hover:gap-3 transition-all">
+          Solicitar propuesta
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <!-- 03 -->
+      <div class="reveal flex flex-col p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-xl hover:shadow-brand-dark/5 hover:-translate-y-1 transition-all duration-300">
+        <span class="text-sm font-semibold text-brand-blue mb-5">03</span>
+        <h3 class="text-xl font-semibold mb-1">Retainer mensual</h3>
+        <p class="text-xs uppercase tracking-wide text-brand-gray mb-4">Acompañamiento continuo</p>
+        <p class="text-sm text-brand-gray leading-relaxed flex-1">
+          Mantenimiento, mejoras y nuevas automatizaciones bajo un acuerdo mensual.
+          Como tener un líder de automatización in-house, sin la nómina completa.
+        </p>
+        <a href="#agendar" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:gap-3 transition-all">
+          Conversemos
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CASOS DE USO ===================== -->
+<section id="casos" class="py-24 bg-white border-y border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="reveal text-sm font-semibold text-brand-blue uppercase tracking-wide mb-3">Casos de uso</p>
+      <h2 class="reveal text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
+        Qué podemos automatizar en tu empresa.
+      </h2>
+      <p class="reveal mt-4 text-brand-gray">
+        Si es repetitivo, sigue reglas y consume tiempo de tu equipo, probablemente se puede automatizar — y entregar con la disciplina con la que se entrega software de verdad.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+      <div class="reveal p-7 rounded-xl bg-brand-bg border border-gray-200 hover:border-brand-blue/40 transition-all duration-300">
+        <div class="w-11 h-11 rounded-lg bg-brand-blue/10 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-brand-blue" viewBox="0 0 24 24" fill="none"><path d="M9 12.5l2 2 4-4M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-semibold mb-1.5">Onboarding y RRHH</h3>
+        <p class="text-sm text-brand-gray leading-relaxed">Flujos de bienvenida, recordatorios internos y trámites repetitivos del equipo, ejecutados solos.</p>
+      </div>
+      <div class="reveal p-7 rounded-xl bg-brand-bg border border-gray-200 hover:border-brand-blue/40 transition-all duration-300">
+        <div class="w-11 h-11 rounded-lg bg-brand-blue/10 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-brand-blue" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-12.8 7.2L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-semibold mb-1.5">Atención al cliente 24/7</h3>
+        <p class="text-sm text-brand-gray leading-relaxed">Agentes con IA en WhatsApp que responden en el tono de tu negocio.</p>
+      </div>
+      <div class="reveal p-7 rounded-xl bg-brand-bg border border-gray-200 hover:border-brand-blue/40 transition-all duration-300">
+        <div class="w-11 h-11 rounded-lg bg-brand-blue/10 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-brand-blue" viewBox="0 0 24 24" fill="none"><rect x="3" y="4.5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-semibold mb-1.5">Agendamiento automático</h3>
+        <p class="text-sm text-brand-gray leading-relaxed">Citas y reservas integradas con tu calendario y CRM, sin intervención manual.</p>
+      </div>
+      <div class="reveal p-7 rounded-xl bg-brand-bg border border-gray-200 hover:border-brand-blue/40 transition-all duration-300">
+        <div class="w-11 h-11 rounded-lg bg-brand-blue/10 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-brand-blue" viewBox="0 0 24 24" fill="none"><path d="M8 7h8M8 12h8M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="3.5" y="3" width="17" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h3 class="font-semibold mb-1.5">Integración entre sistemas</h3>
+        <p class="text-sm text-brand-gray leading-relaxed">Conectamos las herramientas que ya usas para que dejen de operar como islas.</p>
+      </div>
+      <div class="reveal p-7 rounded-xl bg-brand-bg border border-gray-200 hover:border-brand-blue/40 transition-all duration-300">
+        <div class="w-11 h-11 rounded-lg bg-brand-blue/10 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-brand-blue" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8M17 7h4v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-semibold mb-1.5">Seguimiento comercial</h3>
+        <p class="text-sm text-brand-gray leading-relaxed">Recordatorios y mensajes de seguimiento que nunca se olvidan.</p>
+      </div>
+      <div class="reveal p-7 rounded-xl bg-brand-bg border border-gray-200 hover:border-brand-blue/40 transition-all duration-300">
+        <div class="w-11 h-11 rounded-lg bg-brand-blue/10 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-brand-blue" viewBox="0 0 24 24" fill="none"><path d="M5 19V9M12 19V5M19 19v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-semibold mb-1.5">Reportería automática</h3>
+        <p class="text-sm text-brand-gray leading-relaxed">Informes y dashboards que se generan y envían solos, con datos al día.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SISTEMA DE AGENDAMIENTO INTELIGENTE ===================== -->
+<section id="agendar" class="py-24 bg-brand-dark relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-brand-blue/20 blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-brand-cyan/10 blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+      <!-- text -->
+      <div>
+        <p class="reveal inline-flex items-center gap-2 text-sm font-semibold text-brand-cyan uppercase tracking-wide mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span>
+          Agendamiento inteligente
+        </p>
+        <h2 class="reveal text-3xl sm:text-4xl font-bold tracking-tight leading-tight text-white">
+          Reserva tu diagnóstico en menos de un minuto.
+        </h2>
+        <p class="reveal mt-5 text-gray-400 leading-relaxed">
+          Nuestro proceso de agendamiento está completamente automatizado — el mismo
+          tipo de sistema que implementamos para nuestros clientes. Elige el día y la
+          hora que te funcione, y recibe la confirmación al instante. Sin correos de
+          ida y vuelta, sin esperas.
+        </p>
+        <ul class="reveal mt-7 space-y-3.5">
+          <li class="flex items-center gap-3 text-sm text-gray-300">
+            <span class="w-5 h-5 rounded-full bg-brand-blue/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3 h-3 text-brand-cyan" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Confirmación y recordatorios automáticos
+          </li>
+          <li class="flex items-center gap-3 text-sm text-gray-300">
+            <span class="w-5 h-5 rounded-full bg-brand-blue/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3 h-3 text-brand-cyan" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Integrado con calendario en tiempo real
+          </li>
+          <li class="flex items-center gap-3 text-sm text-gray-300">
+            <span class="w-5 h-5 rounded-full bg-brand-blue/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-3 h-3 text-brand-cyan" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Una conversación de 20 minutos, sin compromiso
+          </li>
+        </ul>
+        <a href="https://wa.me/573176466761?text=Hola%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20con%20VeritasQA" target="_blank" rel="noopener"
+           class="reveal mt-8 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-brand-blue text-white font-semibold hover:bg-brand-navy transition-colors duration-200 shadow-lg shadow-brand-blue/30">
+          ¿Prefieres WhatsApp? Escríbeme
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.5-.3-2.6.7.7-2.5-.3-.5A8 8 0 0 1 12 4zm-3.2 4.2c-.2 0-.4 0-.6.3-.2.2-.7.7-.7 1.7s.7 2 .8 2.1c.1.2 1.5 2.3 3.6 3.2 1.8.8 2.1.6 2.5.6.4 0 1.3-.5 1.5-1 .2-.6.2-1 .1-1.1 0-.1-.2-.2-.5-.3l-1.3-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1-.7-.3-1.4-.6-2.1-1.6-.2-.3.2-.3.5-1 .1-.2 0-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.2z"/></svg>
+        </a>
+      </div>
+
+      <div id="booking-widget" class="reveal">
+        <div class="bg-white rounded-2xl shadow-2xl p-7 sm:p-8">
+          <h3 class="text-lg font-semibold text-brand-dark mb-1">Cuéntanos qué necesitas</h3>
+          <p class="text-xs text-brand-gray mb-6">Te respondemos en menos de 24 horas hábiles.</p>
+          <form id="contactForm" class="space-y-4">
+            <div>
+              <label class="block text-xs font-medium text-brand-dark mb-1.5">Nombre completo</label>
+              <input name="nombre" type="text" required class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition" />
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-medium text-brand-dark mb-1.5">Empresa</label>
+                <input name="empresa" type="text" required class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition" />
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-brand-dark mb-1.5">WhatsApp / Teléfono</label>
+                <input name="telefono" type="tel" required class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-brand-dark mb-1.5">Correo corporativo</label>
+              <input name="email" type="email" required class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-brand-dark mb-1.5">¿En qué te podemos ayudar?</label>
+              <select name="interes" required class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition bg-white">
+                <option value="">Selecciona una opción</option>
+                <option>Diagnóstico de Automatización</option>
+                <option>Implementación de un proceso</option>
+                <option>Retainer mensual</option>
+                <option>Aún no estoy seguro</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-brand-dark mb-1.5">Mensaje</label>
+              <textarea name="mensaje" rows="3" required class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition resize-none"></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="w-full py-3 rounded-xl bg-brand-blue text-white font-semibold hover:bg-brand-navy transition-colors duration-200">
+              Enviar solicitud
+            </button>
+            <p id="formMsg" class="text-sm text-center hidden"></p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-brand-dark text-gray-400 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+      <!-- brand -->
+      <div class="max-w-sm">
+        <a href="#" class="flex items-center mb-4">
+          <img src="assets/logo-blanco.png" alt="VeritasQA" class="h-32 w-auto" />
+        </a>
+        <p class="text-sm leading-relaxed">
+          Automatización empresarial con IA. Convertimos operaciones manuales en
+          sistemas que trabajan solos, con la disciplina de un QA con 12 años en Telefónica.
+        </p>
+      </div>
+      <!-- links -->
+      <div>
+        <h4 class="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-4">Navegación</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#servicios" class="hover:text-brand-cyan transition">Servicios</a></li>
+          <li><a href="#casos" class="hover:text-brand-cyan transition">Casos de uso</a></li>
+          <li><a href="#agendar" class="hover:text-brand-cyan transition">Agendar diagnóstico</a></li>
+        </ul>
+      </div>
+      <!-- contact -->
+      <div>
+        <h4 class="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-4">Contacto</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="mailto:edisson.benavides@veritasqa.co" class="hover:text-brand-cyan transition">edisson.benavides@veritasqa.co</a></li>
+          <li><a href="https://wa.me/573176466761" target="_blank" rel="noopener" class="hover:text-brand-cyan transition">+57 317 646 6761</a></li>
+          <li><a href="https://www.linkedin.com/company/veritasqa/" target="_blank" rel="noopener" class="hover:text-brand-cyan transition">LinkedIn · VeritasQA</a></li>
+          <li class="text-gray-500">Bogotá, Colombia · Remoto LATAM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs text-gray-500">
+      <span>© 2026 VeritasQA · veritasqa.co · Todos los derechos reservados.</span>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-gray-300 transition">Política de privacidad</a>
+        <a href="#" class="hover:text-gray-300 transition">Términos de servicio</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== FLOATING WHATSAPP ===================== -->
+<a href="https://wa.me/573176466761?text=Hola%2C%20me%20interesa%20VeritasQA" target="_blank" rel="noopener"
+   class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-brand-blue flex items-center justify-center shadow-lg shadow-brand-blue/30 hover:scale-110 transition-transform duration-200"
+   aria-label="WhatsApp">
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm-3.2 6.2c.1 0 .3 0 .5.4l.7 1.6c0 .2.1.3 0 .5-.3.7-.7.7-.5 1 .7 1 1.4 1.3 2.1 1.6.2.1.4.1.5-.1l.6-.8c.1-.2.3-.2.5-.1l1.3.7c.3.1.5.2.5.3.1.1.1.5-.1 1.1-.2.5-1.1 1-1.5 1-.4 0-.7.2-2.5-.6-2.1-.9-3.5-3-3.6-3.2-.1-.1-.8-1.1-.8-2.1s.5-1.5.7-1.7c.2-.3.4-.3.6-.3h.3z"/></svg>
+</a>
+
+<script>
+  // Navbar: solid background on scroll
+  const header = document.getElementById('header');
+  const onScroll = () => {
+    if (window.scrollY > 16) {
+      header.classList.add('bg-white/90','backdrop-blur-md','border-b','border-gray-100','shadow-sm');
+    } else {
+      header.classList.remove('bg-white/90','backdrop-blur-md','border-b','border-gray-100','shadow-sm');
+    }
+  };
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => mobileMenu.classList.add('hidden'))
+  );
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), Math.min(i, 6) * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Formulario de contacto -> n8n
+  const cForm = document.getElementById('contactForm');
+  const cMsg = document.getElementById('formMsg');
+  const cBtn = document.getElementById('submitBtn');
+  const N8N_WEBHOOK_URL = 'https://n8n.veritasqa.co/webhook/contacto-veritasqa';
+
+  cForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    cBtn.disabled = true; cBtn.textContent = 'Enviando...';
+    cMsg.classList.add('hidden');
+    const data = Object.fromEntries(new FormData(cForm).entries());
+    try {
+      const res = await fetch(N8N_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('error');
+      cForm.reset();
+      cMsg.textContent = '¡Gracias! Te contactaremos muy pronto.';
+      cMsg.className = 'text-sm text-center text-emerald-600';
+    } catch (err) {
+      cMsg.textContent = 'Hubo un problema. Escríbenos por WhatsApp y lo resolvemos.';
+      cMsg.className = 'text-sm text-center text-red-600';
+    } finally {
+      cBtn.disabled = false; cBtn.textContent = 'Enviar solicitud';
+      cMsg.classList.remove('hidden');
+    }
+  });
+</script>
+</body>
+</html>
