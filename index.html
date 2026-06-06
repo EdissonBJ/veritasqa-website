@@ -11,7 +11,6 @@
 <meta property="og:description" content="Convertimos operaciones manuales en sistemas que trabajan solos. Automatización con criterio de QA profesional." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://veritasqa.co" />
-<!-- og:image: agrega aquí una imagen 1200x630 cuando la tengas -->
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="assets/favicon10.png" />
@@ -78,6 +77,15 @@
     background-clip: text;
     color: transparent;
   }
+
+  /* Cal.com iframe */
+  .cal-iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+    border-radius: 1rem;
+    background: white;
+  }
 </style>
 </head>
 
@@ -87,7 +95,6 @@
 <header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
-      <!-- Logo (texto estilizado — reemplazar por asset final cuando lo tengas) -->
       <a href="#" class="flex items-center">
         <img src="assets/logo.png" alt="VeritasQA" class="h-28 w-auto" />
       </a>
@@ -100,7 +107,8 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <a href="#agendar" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-brand-blue text-white text-sm font-semibold hover:bg-brand-navy transition-colors duration-200 shadow-sm">
+        <a href="https://cal.com/veritasqa/" target="_blank" rel="noopener"
+           class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-blue text-white text-sm font-semibold hover:bg-brand-navy transition-colors duration-200 shadow-sm">
           Contáctanos
         </a>
         <button id="menuBtn" class="md:hidden p-2" aria-label="Menú">
@@ -116,13 +124,13 @@
     <a href="#servicios" class="block text-sm font-medium text-brand-gray">Servicios</a>
     <a href="#casos" class="block text-sm font-medium text-brand-gray">Casos</a>
     <a href="#agendar" class="block text-sm font-medium text-brand-gray">Agendar</a>
-    <a href="#agendar" class="block text-center px-5 py-2.5 rounded-lg bg-brand-blue text-white text-sm font-semibold">Contáctanos</a>
+    <a href="https://cal.com/veritasqa/" target="_blank" rel="noopener"
+       class="block text-center px-5 py-2.5 rounded-full bg-brand-blue text-white text-sm font-semibold">Contáctanos</a>
   </div>
 </header>
 
 <!-- ===================== HERO ===================== -->
 <section class="relative pt-36 pb-24 lg:pt-44 lg:pb-28 overflow-hidden">
-  <!-- background flourishes -->
   <div class="absolute inset-0 grid-texture [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000,transparent)]"></div>
   <div class="absolute top-[-10%] right-[-5%] w-[480px] h-[480px] rounded-full bg-brand-blue/10 blur-3xl"></div>
   <div class="absolute bottom-[-20%] left-[-10%] w-[420px] h-[420px] rounded-full bg-brand-cyan/10 blur-3xl"></div>
@@ -143,11 +151,12 @@
     </p>
 
     <div class="reveal mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-      <a href="#servicios" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-blue text-white font-semibold hover:bg-brand-navy transition-colors duration-200 shadow-lg shadow-brand-blue/20">
+      <a href="#servicios" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-brand-blue text-white font-semibold hover:bg-brand-navy transition-colors duration-200 shadow-lg shadow-brand-blue/20">
         Ver servicios
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="#agendar" class="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-transparent border border-brand-gray/40 text-brand-dark font-semibold hover:border-brand-blue hover:text-brand-blue transition-colors duration-200">
+      <a href="https://cal.com/veritasqa/" target="_blank" rel="noopener"
+         class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-transparent border border-brand-gray/40 text-brand-dark font-semibold hover:border-brand-blue hover:text-brand-blue transition-colors duration-200">
         Agendar demo
       </a>
     </div>
@@ -412,49 +421,73 @@
   <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-brand-cyan/10 blur-3xl"></div>
 
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-14 items-center">
-      <!-- text -->
-      <div>
-        <p class="reveal inline-flex items-center gap-2 text-sm font-semibold text-brand-cyan uppercase tracking-wide mb-4">
-          <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span>
-          Agendamiento inteligente
-        </p>
-        <h2 class="reveal text-3xl sm:text-4xl font-bold tracking-tight leading-tight text-white">
-          Reserva tu diagnóstico en menos de un minuto.
-        </h2>
-        <p class="reveal mt-5 text-gray-400 leading-relaxed">
-          Nuestro proceso de agendamiento está completamente automatizado — el mismo
-          tipo de sistema que implementamos para nuestros clientes. Elige el día y la
-          hora que te funcione, y recibe la confirmación al instante. Sin correos de
-          ida y vuelta, sin esperas.
-        </p>
-        <ul class="reveal mt-7 space-y-3.5">
-          <li class="flex items-center gap-3 text-sm text-gray-300">
-            <span class="w-5 h-5 rounded-full bg-brand-blue/20 flex items-center justify-center flex-shrink-0">
-              <svg class="w-3 h-3 text-brand-cyan" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            Confirmación y recordatorios automáticos
-          </li>
-          <li class="flex items-center gap-3 text-sm text-gray-300">
-            <span class="w-5 h-5 rounded-full bg-brand-blue/20 flex items-center justify-center flex-shrink-0">
-              <svg class="w-3 h-3 text-brand-cyan" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            Integrado con calendario en tiempo real
-          </li>
-          <li class="flex items-center gap-3 text-sm text-gray-300">
-            <span class="w-5 h-5 rounded-full bg-brand-blue/20 flex items-center justify-center flex-shrink-0">
-              <svg class="w-3 h-3 text-brand-cyan" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            Una conversación de 20 minutos, sin compromiso
-          </li>
-        </ul>
-        <a href="https://wa.me/573176466761?text=Hola%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20con%20VeritasQA" target="_blank" rel="noopener"
-           class="reveal mt-8 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-brand-blue text-white font-semibold hover:bg-brand-navy transition-colors duration-200 shadow-lg shadow-brand-blue/30">
-          ¿Prefieres WhatsApp? Escríbeme
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.5-.3-2.6.7.7-2.5-.3-.5A8 8 0 0 1 12 4zm-3.2 4.2c-.2 0-.4 0-.6.3-.2.2-.7.7-.7 1.7s.7 2 .8 2.1c.1.2 1.5 2.3 3.6 3.2 1.8.8 2.1.6 2.5.6.4 0 1.3-.5 1.5-1 .2-.6.2-1 .1-1.1 0-.1-.2-.2-.5-.3l-1.3-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1-.7-.3-1.4-.6-2.1-1.6-.2-.3.2-.3.5-1 .1-.2 0-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.2z"/></svg>
+
+    <!-- Header de sección -->
+    <div class="max-w-3xl mb-14">
+      <p class="reveal inline-flex items-center gap-2 text-sm font-semibold text-brand-cyan uppercase tracking-wide mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span>
+        Agendamiento inteligente
+      </p>
+      <h2 class="reveal text-3xl sm:text-4xl font-bold tracking-tight leading-tight text-white">
+        Reserva tu diagnóstico en menos de un minuto.
+      </h2>
+      <p class="reveal mt-5 text-gray-400 leading-relaxed">
+        Nuestro proceso de agendamiento está completamente automatizado — el mismo
+        tipo de sistema que implementamos para nuestros clientes. Elige el día y la
+        hora que te funcione, y recibe la confirmación al instante. Sin correos de
+        ida y vuelta, sin esperas.
+      </p>
+      <ul class="reveal mt-7 flex flex-wrap gap-x-8 gap-y-3">
+        <li class="flex items-center gap-3 text-sm text-gray-300">
+          <span class="w-5 h-5 rounded-full bg-brand-blue/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-3 h-3 text-brand-cyan" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Confirmación y recordatorios automáticos
+        </li>
+        <li class="flex items-center gap-3 text-sm text-gray-300">
+          <span class="w-5 h-5 rounded-full bg-brand-blue/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-3 h-3 text-brand-cyan" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Integrado con calendario en tiempo real
+        </li>
+        <li class="flex items-center gap-3 text-sm text-gray-300">
+          <span class="w-5 h-5 rounded-full bg-brand-blue/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-3 h-3 text-brand-cyan" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Una conversación de 20 minutos, sin compromiso
+        </li>
+      </ul>
+      <div class="reveal mt-7">
+        <a href="https://wa.me/573176466761?text=Hola%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20con%20VeritasQA"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-3 px-6 py-3.5 rounded-full font-semibold text-white transition-all duration-200 shadow-lg hover:opacity-90"
+           style="background-color: #25D366;">
+          <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 2C8.268 2 2 8.268 2 16c0 2.425.638 4.698 1.752 6.668L2 30l7.542-1.715A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="white"/>
+            <path d="M16 4.5c-6.351 0-11.5 5.149-11.5 11.5 0 2.118.578 4.1 1.585 5.8l.285.478-1.21 4.415 4.527-1.188.463.268A11.45 11.45 0 0 0 16 27.5c6.351 0 11.5-5.149 11.5-11.5S22.351 4.5 16 4.5z" fill="#25D366"/>
+            <path d="M11.89 10.5c-.23-.515-.472-.525-.69-.534-.179-.008-.384-.008-.589-.008-.205 0-.538.077-.82.384-.282.308-1.077 1.052-1.077 2.566s1.102 2.976 1.256 3.183c.154.205 2.132 3.388 5.24 4.615 2.593 1.023 3.119.819 3.68.768.563-.051 1.817-.743 2.073-1.46.257-.718.257-1.333.18-1.46-.077-.128-.282-.205-.589-.359-.307-.154-1.817-.897-2.099-1-.282-.102-.487-.154-.69.154-.205.308-.793.998-.972 1.203-.18.205-.358.23-.665.077-.307-.154-1.297-.478-2.47-1.524-.912-.814-1.528-1.818-1.707-2.126-.18-.308-.019-.474.135-.628.138-.138.307-.359.46-.538.154-.18.205-.308.307-.513.103-.205.052-.384-.025-.538-.077-.154-.672-1.675-.92-2.29z" fill="white"/>
+          </svg>
+          Escríbenos por WhatsApp
         </a>
       </div>
+    </div>
 
+    <!-- Grid 2 columnas: calendario · formulario -->
+    <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+
+      <!-- Columna 1: Cal.com embed -->
+      <div class="reveal flex flex-col">
+        <div class="rounded-2xl overflow-hidden shadow-2xl bg-white flex-1">
+          <iframe
+            src="https://cal.com/veritasqa/?embed=true&theme=light"
+            class="cal-iframe"
+            title="Agendar con VeritasQA"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Columna 3: Formulario de contacto -->
       <div id="booking-widget" class="reveal">
         <div class="bg-white rounded-2xl shadow-2xl p-7 sm:p-8">
           <h3 class="text-lg font-semibold text-brand-dark mb-1">Cuéntanos qué necesitas</h3>
@@ -492,7 +525,7 @@
               <label class="block text-xs font-medium text-brand-dark mb-1.5">Mensaje</label>
               <textarea name="mensaje" rows="3" required class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition resize-none"></textarea>
             </div>
-            <button type="submit" id="submitBtn" class="w-full py-3 rounded-xl bg-brand-blue text-white font-semibold hover:bg-brand-navy transition-colors duration-200">
+            <button type="submit" id="submitBtn" class="w-full py-3 rounded-full bg-brand-blue text-white font-semibold hover:bg-brand-navy transition-colors duration-200">
               Enviar solicitud
             </button>
             <p id="formMsg" class="text-sm text-center hidden"></p>
@@ -507,15 +540,14 @@
 <!-- ===================== FOOTER ===================== -->
 <footer class="bg-brand-dark text-gray-400 pt-16 pb-8">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+    <div class="grid md:grid-cols-3 gap-10 pb-12 border-b border-white/10 items-start">
       <!-- brand -->
-      <div class="max-w-sm">
+      <div>
         <a href="#" class="flex items-center mb-4">
           <img src="assets/logo-blanco.png" alt="VeritasQA" class="h-32 w-auto" />
         </a>
         <p class="text-sm leading-relaxed">
-          Automatización empresarial con IA. Convertimos operaciones manuales en
-          sistemas que trabajan solos, con la disciplina de un QA con 12 años en Telefónica.
+          Automatizamos los procesos repetitivos de empresas medianas en LATAM con IA y sistemas conectados. Operaciones más rápidas, equipos más enfocados, resultados medibles.
         </p>
       </div>
       <!-- links -->
@@ -550,9 +582,13 @@
 
 <!-- ===================== FLOATING WHATSAPP ===================== -->
 <a href="https://wa.me/573176466761?text=Hola%2C%20me%20interesa%20VeritasQA" target="_blank" rel="noopener"
-   class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-brand-blue flex items-center justify-center shadow-lg shadow-brand-blue/30 hover:scale-110 transition-transform duration-200"
+   class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200"
+   style="background-color: #25D366;"
    aria-label="WhatsApp">
-  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm-3.2 6.2c.1 0 .3 0 .5.4l.7 1.6c0 .2.1.3 0 .5-.3.7-.7.7-.5 1 .7 1 1.4 1.3 2.1 1.6.2.1.4.1.5-.1l.6-.8c.1-.2.3-.2.5-.1l1.3.7c.3.1.5.2.5.3.1.1.1.5-.1 1.1-.2.5-1.1 1-1.5 1-.4 0-.7.2-2.5-.6-2.1-.9-3.5-3-3.6-3.2-.1-.1-.8-1.1-.8-2.1s.5-1.5.7-1.7c.2-.3.4-.3.6-.3h.3z"/></svg>
+  <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2C8.268 2 2 8.268 2 16c0 2.425.638 4.698 1.752 6.668L2 30l7.542-1.715A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="white"/>
+    <path d="M11.89 10.5c-.23-.515-.472-.525-.69-.534-.179-.008-.384-.008-.589-.008-.205 0-.538.077-.82.384-.282.308-1.077 1.052-1.077 2.566s1.102 2.976 1.256 3.183c.154.205 2.132 3.388 5.24 4.615 2.593 1.023 3.119.819 3.68.768.563-.051 1.817-.743 2.073-1.46.257-.718.257-1.333.18-1.46-.077-.128-.282-.205-.589-.359-.307-.154-1.817-.897-2.099-1-.282-.102-.487-.154-.69.154-.205.308-.793.998-.972 1.203-.18.205-.358.23-.665.077-.307-.154-1.297-.478-2.47-1.524-.912-.814-1.528-1.818-1.707-2.126-.18-.308-.019-.474.135-.628.138-.138.307-.359.46-.538.154-.18.205-.308.307-.513.103-.205.052-.384-.025-.538-.077-.154-.672-1.675-.92-2.29z" fill="#25D366"/>
+  </svg>
 </a>
 
 <script>
